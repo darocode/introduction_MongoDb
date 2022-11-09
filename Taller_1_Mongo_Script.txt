@@ -1,0 +1,267 @@
+use videojuegos
+db.createCollection('FPS')
+db.createCollection('deportes')
+db.createCollection('Terror')
+
+show collections
+
+db.FPS.insertMany(
+[
+{
+_id:1,
+ "nombre":"Call of Duty",
+ "fecLanzamiento":"29/10/2003",
+ "numSecuelas":45,
+ "online":"si"
+},{
+ _id:2,
+ "nombre":"Battlefield",
+ "fecLanzamiento":"20/09/2002",
+ "numSecuelas":21,
+ "online":"si"
+},{
+ _id:3, 
+ "nombre":"Valorant",
+ "fecLanzamiento": "02/06/2020",
+ "numSecuelas":1,
+ "online":"si"
+},{
+ _id:4,
+ "nombre":"Far cry", 
+ "fecLanzamiento":"23/03/2004",
+ "numSecuelas":16,
+ "online":"no"
+},{
+_id:5, 
+ "nombre":"Halo",
+ "fecLanzamiento":"15/11/2001",
+ "numSecuelas":15,
+ "online":"si"
+},{
+_id:6,
+ "nombre":"Doom",
+ "fecLanzamiento":"04/07/1993",
+ "numSecuelas":6,
+ "online":"no"
+},{
+_id:7,
+ "nombre":"Dying Light",
+ "fecLanzamiento":"27/01/2015",
+ "numSecuelas":4,
+ "online":"si"
+},{
+_id:8,
+ "nombre":"Apex Legends",
+ "fecLanzamiento":"04/02/2019",
+ "numSecuelas":1,
+ "online":"si"
+},{
+_id:9,
+ "nombre":"Pubg",
+ "fecLanzamiento":"01/09/2017",
+ "numSecuelas":1,
+ "online":"si"
+},{
+_id:10,
+ "nombre":"Swat",
+ "fecLanzamiento":"10/06/2004",
+ "numSecuelas":5,
+ "online":"si"}])
+
+
+
+db.deportes.insertMany(
+[
+{
+_id:1,
+ "nombre":"Fifa",
+ "fecLanzamiento":"10/12/1993",
+ "numSecuelas":23,
+ "online":"si"
+},
+{
+ _id:2,
+ "nombre":"Pro Evolution Soccer",
+ "fecLanzamiento":"20/09/2001",
+ "numSecuelas":23,
+ "online":"si"
+},
+{
+ _id:3, 
+ "nombre":"NBA 2k",
+ "fecLanzamiento": "02/06/2001",
+ "numSecuelas":23,
+ "online":"si"
+},
+{
+ _id:4,
+ "nombre":"WWE 2k", 
+ "fecLanzamiento":"23/03/2002",
+ "numSecuelas":22,
+ "online":"si"
+},
+{
+_id:5, 
+ "nombre":"Forza Horizon",
+ "fecLanzamiento":"15/11/2005",
+ "numSecuelas":3,
+ "online":"si"
+},
+{
+_id:6,
+ "nombre":"Need for Speed",
+ "fecLanzamiento":"04/07/1994",
+ "numSecuelas":17,
+ "online":"si"
+},
+{
+_id:7,
+ "nombre":"Gran Turismo",
+ "fecLanzamiento":"27/01/2001",
+ "numSecuelas":20,
+ "online":"no"
+},
+{
+_id:8,
+ "nombre":"Ufc",
+ "fecLanzamiento":"04/02/2004",
+ "numSecuelas":3,
+ "online":"si"
+},
+{
+_id:9,
+ "nombre":"Formula 1",
+ "fecLanzamiento":"01/09/1992",
+ "numSecuelas":10,
+ "online":"no"
+},
+{
+_id:10,
+ "nombre":"Rocket League",
+ "fecLanzamiento":"07/07/2015",
+ "numSecuelas":2,
+ "online":"si"}])
+
+
+
+
+db.Terror.insertMany(
+[
+{
+_id:1,
+ "nombre":"Resident Evil",
+ "fecLanzamiento":"10/11/1998",
+ "numSecuelas":9,
+ "online":"si"
+},
+{
+ _id:2,
+ "nombre":"Silent Hill",
+ "fecLanzamiento":"19/04/2001",
+ "numSecuelas":3,
+ "online":"no"
+},
+{
+ _id:3, 
+ "nombre":"Visage",
+ "fecLanzamiento": "02/06/2021",
+ "numSecuelas":1,
+ "online":"no"
+},
+{
+ _id:4,
+ "nombre":"Phasmophobia", 
+ "fecLanzamiento":"23/03/2020",
+ "numSecuelas":1,
+ "online":"si"
+},
+{
+_id:5, 
+ "nombre":"Forza Horizon",
+ "fecLanzamiento":"15/11/2005",
+ "numSecuelas":3,
+ "online":"si"
+},
+{
+_id:6,
+ "nombre":"Need for Speed",
+ "fecLanzamiento":"04/07/1994",
+ "numSecuelas":17,
+ "online":"si"
+},
+{
+_id:7,
+ "nombre":"Gran Turismo",
+ "fecLanzamiento":"27/01/2001",
+ "numSecuelas":20,
+ "online":"no"
+},
+{
+_id:8,
+ "nombre":"Ufc",
+ "fecLanzamiento":"04/02/2004",
+ "numSecuelas":3,
+ "online":"si"
+},
+{
+_id:9,
+ "nombre":"Formula 1",
+ "fecLanzamiento":"01/09/1992",
+ "numSecuelas":10,
+ "online":"no"
+},
+{
+_id:10,
+ "nombre":"Rocket League",
+ "fecLanzamiento":"07/07/2015",
+ "numSecuelas":2,
+ "online":"si"}])
+
+
+CONSULTAS
+gt->mayot que.
+db.FPS.find({ numSecuelas: {$gt:20}})
+
+eq-> Igual que.
+db.FPS.find({ online:{$eq:"no"}})
+
+ne-> Distinto de.
+db.FPS.find({ online:{$ne:"no"}})
+
+lt-> Menor que.
+db.Terror.find({ numSecuelas:{$lt:10}})
+
+lte-> Menor o igual que.
+db.Terror.find({ numSecuelas:{$lte: 2}})
+
+nin ->No este entre.
+db.deportes.find({ numSecuelas:{$nin:[2,10]}})
+
+in-> Dentro de.
+db.deportes.find({ numSecuelas:{$in:[3,10,20]}})
+
+or-> Un valor u otro
+db.FPS.find({ $or:[{ nombre:{$eq:"Call of Duty"}},{ online:{$eq:"si"}}]})
+
+
+
+ACTUALIZACIONES
+updateMany--->
+set-->
+actualizar varios elementos
+db.FPS.updateMany({ online:{$eq:"no"}},{$set:{ online:"si"}})
+db.FPS.updateMany({ numSecuelas:{$eq:1}},{$set:{ numSecuelas:3}})
+
+updateOne-->actualizar uno solo
+db.deportes.updateOne({ nombre:"Pro Evolution Soccer"},{$set:{nombre:"PES"}})
+
+upsert->si no encuentra el documento a actualizar insertara los datos
+db.FPS.updateOne({"_id":{$eq:11}},{$set:{"nombre":"Spec Ops"}},{$set:{"fecLanzamiento":"23/04/2014"}},{$set:{"numSecuelas":3}},{$set:{"online":"no"}})
+
+
+ELIMINAR
+db.FPS.findOneAndDelete({"nombre":"Valorant"})
+db.deportes.findOneAndDelete({"fecLanzamiento":"23/03/2002"})
+db.Terror.deleteMany({"online":{$eq:"no"}})
+db.Terror.deleteOne({"_id":4})
+db.FPS.deleteOne({"_id":5})
